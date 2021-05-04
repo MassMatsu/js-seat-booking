@@ -4,7 +4,6 @@ const allSeats = document.querySelectorAll('.row .seat');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
-const purchaseBtn = document.getElementById('purchase')
 
 
 let ticketPrice = +movieSelect.value;
