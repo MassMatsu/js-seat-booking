@@ -12,7 +12,7 @@ let ticketPrice = +movieSelect.value;
 const populateUI = () => {
   const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'))
 
-  if (selectedSeats.length > 0) {
+  if (selectedSeats && selectedSeats.length > 0) {
     // check if selectedSeats index matches any seat index and add selected class
     allSeats.forEach((seat, index) => {
       if (selectedSeats.indexOf(index) > -1) {

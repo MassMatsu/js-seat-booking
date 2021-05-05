@@ -4,10 +4,14 @@ const allSeats = document.querySelectorAll('.row .seat');
 const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
+const purchase  = document.getElementById('purchase')
+const message = document.getElementById('message')
+const msg = document.getElementById('ticket-info')
+
 
 let ticketPrice = +movieSelect.value;
 
-let data = {
+let ticket = {
   movieIndex: 0,
   seats: [],
   moviePrice: 10,
@@ -15,29 +19,54 @@ let data = {
 
 let tickets = []
 
-const setData = (updates) => {
+const setData = (updates = {}) => {
   if (localStorage.getItem('movieData')) {
-    data = JSON.parse(localStorage.getItem('movieData'))
+    ticket = JSON.parse(localStorage.getItem('movieData'))
   }
-  data = {
-    ...data,
+  ticket = {
+    ...ticket,
     ...updates
   }
-  localStorage.setItem('movieData', JSON.stringify(data))
-  console.log(data)
+  localStorage.setItem('movieData', JSON.stringify(ticket))
 };
 
-const populateUI = (data) => {
-  if (data.seats !== null && data.seats.length > 0)
-   {
-    seats.forEach((seat, index) => {
-      
-    })  
+const populateUI = () => {
+  const data = JSON.parse(localStorage.getItem('movieData'))
+  if (data !== null && data.seats.length > 0) {
+    allSeats.forEach((seat, index) => {
+      if (data.seats.indexOf(index) > -1) {
+        seat.classList.add('selected');
+      }
+    });
+  } else {
+    allSeats.forEach((seat) => {
+      seat.classList.remove('selected')
+    })
+  }
+  if (data) {
+    movieSelect.selectedIndex = data.movieIndex
+    ticketPrice = data.moviePrice
+  } else {
+    console.log('hello')
+    movieSelect.selectedIndex = 0
   }
 }
 
-// save selected movie index and price
-const setMovieData = (movieIndex, moviePrice) => {};
+// render purchase details
+const populateMessage = () => {
+  msg.classList.add('show')
+  setTimeout(() => {
+    msg.classList.remove('show')
+  }, 5000)
+  const data = JSON.parse(localStorage.getItem('tickets'))
+  const {movieIndex, seats, moviePrice} = data[data.length - 1]
+  console.log(data)
+  msg.innerHTML = `
+    <p>${seats.length} tickets purchase</p>
+    <p>for ${movieSelect[movieIndex].textContent}</p>
+    <p>seat no: ${[...seats]}    total of $${seats.length * moviePrice}</p>
+  `;
+}
 
 // update total and count
 const updateSelectedCount = () => {
@@ -50,13 +79,11 @@ const updateSelectedCount = () => {
   const seatsIndex = [...selectedSeats].map((seat) => {
     return [...allSeats].indexOf(seat);
   });
-  //console.log(seatsIndex)
-  
+  console.log(movieSelect.selectedIndex);
   setData({seats: seatsIndex})
-  console.log(data)
 };
 
-//
+// select seats by clicking and add class to node
 container.addEventListener('click', (e) => {
   if (
     e.target.classList.contains('seat') &&
@@ -71,22 +98,30 @@ container.addEventListener('click', (e) => {
 movieSelect.addEventListener('change', (e) => {
   ticketPrice = +e.target.value;
 
-  setMovieData(e.target.selectedIndex, e.target.value);
-
   setData({
     movieIndex: e.target.selectedIndex, 
     moviePrice: +e.target.value
   })
+  updateSelectedCount()
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-  // const movieIndex = 3
-  // const seats = [4, 8, 9, 10]
-  // const moviePrice = 12
-  // const newData = {
-  //   movieIndex,
-  //   seats,
-  //   moviePrice,
-  // };
-  //setData()
+// purchase event
+purchase.addEventListener('click', () => {
+  const data = JSON.parse(localStorage.getItem('movieData'))
+  tickets.push(data)
+  localStorage.setItem('tickets', JSON.stringify(tickets))
+  localStorage.removeItem('movieData')
+  message.classList.add('success')
+  setTimeout(() => {
+    message.classList.remove('success')
+  }, 5000)
+  populateUI()
+  updateSelectedCount()
+  populateMessage()
 })
+
+populateUI()
+updateSelectedCount()
+
+
+
