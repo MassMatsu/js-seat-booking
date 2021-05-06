@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Open+Sans&display=swap');
 
 :root {
-
 }
 
 *,
@@ -26,7 +25,9 @@ body {
 
 .title {
   color: rgb(85, 84, 84);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  border-left: 2px solid #fff;
 }
 
 .message-container {
@@ -41,12 +42,12 @@ body {
   justify-content: center;
 }
 
-.instruction{
-  color: rgba(255, 255, 255, 0.8)
+.instruction {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.instruction.hide{
-  display: none
+.instruction.hide {
+  display: none;
 }
 
 .ticket-info {
@@ -54,10 +55,10 @@ body {
   display: none;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.8);
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 .ticket-info.show {
-  display: block
+  display: block;
 }
 
 .movie-container {
@@ -142,7 +143,7 @@ body {
   width: 100%;
   margin: 15px 0;
   transform: rotateX(-45deg);
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7)
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
 
 .row {
@@ -156,7 +157,6 @@ body {
 p.text span {
   color: #6feaf6;
 }
-
 
 .purchase-container {
   display: flex;
@@ -174,7 +174,7 @@ button {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
-button:hover{
+button:hover {
   color: rgb(85, 84, 84, 0.7);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s linear;
@@ -188,5 +188,3 @@ button:hover{
   opacity: 1;
   transition: all 0.3s linear;
 }
-
-
