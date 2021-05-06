@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="movie-container">
+    <h1 class="title">Movie seat booking</h1>
+    <div class='message-container'>
+      <p id='instruction' class='instruction'>
+        1. please pick a movie from the list <br>
+        2. select seat for the numner of people
+      </p>
+
       <div id='ticket-info' class='ticket-info'>
-      
       </div>
+    </div>
       
+    <div class="movie-container">  
       <label>Pick a movie:</label>
       <select id="movie">
         <option value="10">Avengers: Endgame ($10)</option>
@@ -24,7 +31,7 @@
     <ul class="showcase">
       <li>
         <div class="seat"></div>
-        <small>N/A</small>
+        <small>Available</small>
       </li>
       <li>
         <div class="seat selected"></div>
@@ -32,7 +39,7 @@
       </li>
       <li>
         <div class="seat occupied"></div>
-        <small>occupied</small>
+        <small>Occupied</small>
       </li>
     </ul>
 
@@ -111,7 +118,7 @@
       <button id="purchase">purchase</button>
       <span id="message" >Your purchase succeeded</span>
     </div>
+    </div>
+    <script type='module' src="app.js"></script>
 
-    <script src="app-sub.js"></script>
-  </body>
 </html>
