@@ -24,4 +24,5 @@ it is imitating a seat booking system letting a user choose the movie from the l
 - resetData plays a role to clear data for a single transaction and set initial value once the purchase button is clicked 
 - purchase details message appears with css class toggling
 
+##### DEMO
 <img src="https://user-images.githubusercontent.com/66154455/117386971-d90a1e80-af22-11eb-8dd6-003fd0f22331.gif" width="400px">
