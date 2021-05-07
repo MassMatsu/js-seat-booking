@@ -91,7 +91,7 @@ body {
   border-top-right-radius: 10px;
 }
 .seat.selected {
-  background-color: #6feaf6;
+  background-color: #f88921;
 }
 
 .seat.occupied {
@@ -155,7 +155,7 @@ body {
 } */
 
 p.text span {
-  color: #6feaf6;
+  color: #f88921;
 }
 
 .purchase-container {
