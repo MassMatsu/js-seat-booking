@@ -1,6 +1,7 @@
 ##### Movie seat booking app
 it is imitating a seat booking system letting a user choose the movie from the list and seat on the UI by clicking.
 
+link to checkout! - https://js-seat-booking.netlify.app/
 
 ##### how to use
 ** have a experience to book your movie ticket **
